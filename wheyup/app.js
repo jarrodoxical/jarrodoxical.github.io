@@ -43,6 +43,7 @@ function calculateTotalPrice(){
   
   document.getElementById('cost100-calculated').innerHTML = "$" + result + ending;
   document.getElementById('hidden-result').value = result;
+  document.getElementById('pro-percent-lab').style.display = 'block';
 }
 
 function addToTable(){
