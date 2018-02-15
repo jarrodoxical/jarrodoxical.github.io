@@ -4,7 +4,7 @@
 <link href="./style.css" rel="stylesheet" />
 <link rel="icon" type="image/png" href="./favicon2.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>WheyUp | The way to weigh your whey while you wait.</title>
+<title>WheyUp | The way to weigh your whey (while you wait)</title>
 </head>
 <link href='https://fonts.googleapis.com/css?family=Work+Sans:300,400' rel='stylesheet' type='text/css'>
 
@@ -29,6 +29,8 @@
   <span class="pro-percent">
 	<input type="number" min="0" value="75" step="1" id="pro-percent" name="pro-percent" class=pro-percent-in onchange="calculateTotalPrice()" onmouseover="document.getElementById('pro-percent-lab').style.display = 'none';"/><label id="pro-percent-lab" class="input__label_behind">	<span class="input__label-content">%</span></label></span> pure, then it's<br>
   <input type="hidden" id="hidden-result" name="hidden-result" class="hidden-result" />
+  <input type="hidden" id="hidden-result-kg" name="hidden-result-kg" class="hidden-result-kg" />
+  <input type="hidden" id="hidden-result-lbs" name="hidden-result-lbs" class="hidden-result-lbs" />
     <span id="cost100-calculated">$0 / 100g</span>  of <b>Protein</b>.
     <p style="margin-bottom:40px;"></p>
     <span class="pro-pure"><b>Purity:</b> 

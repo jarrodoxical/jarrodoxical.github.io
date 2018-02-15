@@ -29,20 +29,30 @@ function calculateTotalPrice(){
   var netWeight = (((initialPC)/100) * initialWeight)
   //(this.price/(real*1000)*100).toFixed(2);
   var multi=100
-  var extraMulti=1
   var ending = " per 100g"
   var result= (initialCost/(netWeight*1000)*multi).toFixed(2);
+  var resultKG= (initialCost/(netWeight*1000)*multi).toFixed(2);
+  multi=16;
+  
+  var KGLBS=2.204623;
+  var ozInKG=(netWeight*KGLBS)*multi;
+  var resultLBS= (initialCost/ozInKG).toFixed(2);
+  
   if (metric=="2"){
-      ending = " per oz"
-      multi=16
-      extraMulti=3.5
-      var oz=netWeight*multi
-
+      ending = " per oz";
+      var oz=netWeight*multi;
       result= (initialCost/oz).toFixed(2);
+      resultLBS=result;
+      //multi=100;
+      resultKG= (initialCost/(netWeight/KGLBS)/10).toFixed(2);
+  } else {
+    
   }
   
   document.getElementById('cost100-calculated').innerHTML = "$" + result + ending;
   document.getElementById('hidden-result').value = result;
+  document.getElementById('hidden-result-kg').value = resultKG;
+  document.getElementById('hidden-result-lbs').value = resultLBS;
   document.getElementById('pro-percent-lab').style.display = 'block';
 }
 
@@ -53,6 +63,8 @@ function addToTable(){
   var initialCost = theForm.elements["pro-cost"].value;
   var initialPC = theForm.elements["pro-percent"].value;
   var price100 = theForm.elements["hidden-result"].value;
+  var price100KG = theForm.elements["hidden-result-kg"].value;
+  var price100LBS = theForm.elements["hidden-result-lbs"].value;
   var metric = theForm.elements["metric"].value;
   var tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
 
@@ -79,10 +91,12 @@ function addToTable(){
     resultA="";
   }
   var newCell2  = newRow.insertCell(2);
-  var newText2  = document.createTextNode(resultA);
+  //var newText2  = document.createTextNode(resultA);
+  var newText2  = document.createTextNode("$"+price100KG);
   newCell2.appendChild(newText2);
   var newCell3  = newRow.insertCell(3);
-  var newText3  = document.createTextNode(resultB);
+  //var newText3  = document.createTextNode(resultB);
+  var newText3  = document.createTextNode("$"+price100LBS);
   newCell3.appendChild(newText3);
 }
 
